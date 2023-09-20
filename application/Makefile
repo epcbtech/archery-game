@@ -193,6 +193,7 @@ help:
 	$(Print) "             Note: This option is needed install ak-flash. Link download & install: https://github.com/epcbtech/ak-flash"
 	$(Print) "             Example: make flash dev=/dev/ttyUSB0"
 	$(Print) "[make flash] burn firmware via st-link"
+	$(Print) "[make factory] burn factory firmware via st-link"
 	$(Print) "[make com dev=/dev/tty*] console AK Embedded Base Kit"
 	$(Print) "[make debug gdb=ddd] gdb debug using ddd"
 	$(Print) "[make debug] gdb debug"
@@ -207,6 +208,14 @@ ifdef dev
 	ak-flash $(dev) $(TARGET:.axf=.bin) $(APP_START_ADDR_VAL)
 else
 	$(PROGRAMER_PATH)/STM32_Programmer.sh -c port=SWD -w $(TARGET:.axf=.bin) $(APP_START_ADDR_VAL) -rst
+endif
+
+.PHONY: factory
+factory:
+ifdef dev
+	ak-flash $(dev) ../resources/bin/ak-base-kit-stm32l151-application.bin $(APP_START_ADDR_VAL)
+else
+	$(PROGRAMER_PATH)/STM32_Programmer.sh -c port=SWD -w ../resources/bin/ak-base-kit-stm32l151-application.bin $(APP_START_ADDR_VAL) -rst
 endif
 
 .PHONY: com

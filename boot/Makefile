@@ -13,8 +13,8 @@ Print = @echo "~"
 NAME_MODULE = ak-base-kit-stm32l151-boot
 PROJECT = $(NAME_MODULE)
 
-GCC_PATH		= $(HOME)/workspace/tools/gcc-arm-none-eabi-10.3-2021.10
-PROGRAMER_PATH		= $(HOME)/workspace/tools/STM32CubeProgrammer/bin
+GCC_PATH		= $(HOME)/Workspace/Tools/gcc-arm-none-eabi-10.3-2021.10
+PROGRAMER_PATH		= $(HOME)/Workspace/Tools/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin
 OPENOCD_CFG_PATH	= /usr/local/share/openocd/scripts/board/stm32ldiscovery.cfg
 
 #Include sources file
@@ -187,6 +187,14 @@ $(OBJECTS_DIR)/%.o: %.s
 flash: 	all
 	$(Print) BURNING $(TARGET:.axf=.bin) to target
 	$(PROGRAMER_PATH)/STM32_Programmer.sh -c port=SWD -w $(TARGET:.axf=.bin) $(BOOT_START_ADDR_VAL) -rst
+
+.PHONY: factory
+factory:
+ifdef dev
+	ak-flash $(dev) ../resources/bin/ak-base-kit-stm32l151-boot.bin $(BOOT_START_ADDR_VAL)
+else
+	$(PROGRAMER_PATH)/STM32_Programmer.sh -c port=SWD -w ../resources/bin/ak-base-kit-stm32l151-boot.bin $(BOOT_START_ADDR_VAL) -rst
+endif
 
 debug:	all
 	xterm -e openocd -f $(OPENOCD_PATH)/tcl/board/stm32ldiscovery.cfg &
