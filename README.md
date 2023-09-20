@@ -8,7 +8,7 @@
 
 AK Embedded Base Kit là một công cụ đánh giá dành cho các bạn học phần mềm nhúng nâng cao.
 
-KIT tích hợp LCD **OLed 1.3", 3 nút nhấn, và 1 loa Buzzer phát nhạc**, với các trang bị này thì đã đủ để học hệ thống event-driven thông qua thực hành thiết kế máy chơi game.
+KIT tích hợp LCD **OLED 1.3", 3 nút nhấn, và 1 loa Buzzer phát nhạc**, với các trang bị này thì đã đủ để học hệ thống event-driven thông qua thực hành thiết kế máy chơi game.
 
 KIT cũng tích hợp **RS485**, **NRF24L01+**, và **Flash** lên đến 32MB, thích hợp cho prototype các ứng dụng thực tế trong hệ thống nhúng hay sử dụng như: truyền thông có dây, không dây wireless, các ứng dụng lưu trữ data logger,...
 
@@ -29,7 +29,7 @@ Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lự
 
 ***Hình 3:** Màn hình game play và các đối tượng* </center>
 
-#### Các đối tượng (OBject) trong game:
+#### Các đối tượng (Object) trong game:
 |Đối tượng|Tên đối tượng|Mô tả|
 |---|---|---|
 |**Cung tên**|Archery|Di chuyển lên/xuống để chọn vị trí bắn ra mũi tên|
@@ -43,12 +43,11 @@ Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lự
 #### Cách chơi game: 
 - Trong trò chơi này bạn sẽ điều khiển Archery, di chuyển **lên/xuống** bằng hai nút **[Up]/[Down]**, để chọn vị trí **bắn ra** Arrow.
 - Khi nhấn nút **[Mode]** Arrow sẽ được bắn ra, nhằm phá hủy các Meteoroid đang bay đến.
-
-- Mục tiêu trò chơi là kiếm được nhiều điểm nhất có thể, trò chơi sẽ kết thúc khi có Meteoroid chạm vào Border.
+- Mục tiêu trò chơi là kiếm được càng nhiều điểm càng tốt, trò chơi sẽ kết thúc khi có Meteoroid chạm vào Border.
 
 #### Cơ chế hoạt động:
-- **Cách tính điểm:** Điểm được tính bằng số lượng Meteoroid phá hủy được. Mỗi Meteoroid bị phá hủy tương ứng với 10 điểm. Số điểm tích lũy được sẽ hiển thị ở góc dưới bên phải màn hình.
-- **Độ khó:** Cứ mỗi lần tích lũy được 200 điểm thì tốc độ bay của Meteoroid sẽ tăng lên một mức. Độ khó ban đầu có thể cài đặt trong phần **setting**.
+- **Cách tính điểm:** Điểm được tính bằng số lượng Meteoroid bị phá hủy. Mỗi Meteoroid bị phá hủy tương ứng với 10 điểm. Số điểm tích lũy được sẽ hiển thị ở góc dưới bên phải màn hình.
+- **Độ khó:** Mỗi khi tích lũy được 200 điểm, tốc độ bay của Meteoroid sẽ tăng lên một cấp độ. Độ khó ban đầu có thể cài đặt trong phần **setting**.
 - **Giới hạn của Arrow:** Khi bắn thì số lượng Arrow hiện có sẽ giảm đi tương ứng số lượng Arrow đang bay, nếu Arrow hiện có giảm về "0" thì không thể bắn được và sẽ có âm thanh báo. Số lượng Arrow hiện có sẽ được hồi lại khi phá hủy được Meteoroid hoặc Arrow bay hết màn hình game. Số lượng Arrow được hiển thị ở góc dưới bên trái màn hình và có thể thay đổi trong phần **setting**.
 
 - **Animation:** Để trò chơi thêm phần sinh động thì các đối tượng sẽ có thêm hoạt ảnh lúc di chuyển.
