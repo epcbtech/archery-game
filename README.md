@@ -8,7 +8,7 @@
 
 AK Embedded Base Kit là một công cụ đánh giá dành cho các bạn học phần mềm nhúng nâng cao.
 
-KIT tích hợp LCD OLed 1.3", 3 nút nhấn, và 1 loa Buzzer phát nhạc, với các trang bị này thì đã đủ để học hệ thống event-driven thông qua thực hành thiết kế máy chơi game.
+KIT tích hợp LCD **OLed 1.3", 3 nút nhấn, và 1 loa Buzzer phát nhạc**, với các trang bị này thì đã đủ để học hệ thống event-driven thông qua thực hành thiết kế máy chơi game.
 
 KIT cũng tích hợp **RS485**, **NRF24L01+**, và **Flash** lên đến 32MB, thích hợp cho prototype các ứng dụng thực tế trong hệ thống nhúng hay sử dụng như: truyền thông có dây, không dây wireless, các ứng dụng lưu trữ data logger,...
 
@@ -27,55 +27,59 @@ Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lự
 
 <center><img src="resources\images\objects_in_the_game.png" width="480"/>
 
-*Hình 3: Màn hình Game_play và các đối tượng* </center>
+***Hình 3:** Màn hình game play và các đối tượng* </center>
 
 #### Các đối tượng (OBject) trong game:
-|Đối tượng|Tên đối tượng|Tác dụng|
+|Đối tượng|Tên đối tượng|Mô tả|
 |---|---|---|
-|**Archery**|Cung tên|Nơi bắn ra mũi tên|
-|**Arrow**|Mũi tên|Bắn ra từ cung tên để phá hủy thiên thạch|
-|**Bang**|Vụ nổ |Xuất hiện khi thiên thạch bị phá hủy|
-|**Border**|Ranh giới |Vùng an toàn phải bảo vệ không cho thiên thạch rơi vào|
-|**Meteoroid**|Thiên thạch |Đối tượng bay về phía vùng an toàn có thể phá hủy bởi mũi tên|
+|**Cung tên**|Archery|Di chuyển lên/xuống để chọn vị trí bắn ra mũi tên|
+|**Mũi tên**|Arrow|Bắn ra từ cung tên, dùng để phá hủy thiên thạch|
+|**Vụ nổ**|Bang|Hiệu ứng xuất hiện khi thiên thạch bị phá hủy|
+|**Ranh giới**|Border|Vùng an toàn phải bảo vệ không cho thiên thạch rơi vào|
+|**Thiên thạch**|Meteoroid|Vật thể bay về phía cung tên với tốc độ tăng dần, có khả năng phá hủy ranh giới|
 
 **(*)** Trong phần còn lại của tài liệu sẽ dùng tên của các đối tượng để đề cập đến đối tượng.
 
 #### Cách chơi game: 
-- Trong trò chơi này bạn sẽ điều khiển Archery di chuyển **lên/xuống** bằng hai nút **[Up]/[Down]** chọn vị trí **bắn ra** Arrow bằng nút **[Mode]** nhằm phá hủy các Meteoroid đang bay đến.
+- Trong trò chơi này bạn sẽ điều khiển Archery, di chuyển **lên/xuống** bằng hai nút **[Up]/[Down]**, để chọn vị trí **bắn ra** Arrow.
+- Khi nhấn nút **[Mode]** Arrow sẽ được bắn ra, nhằm phá hủy các Meteoroid đang bay đến.
 
 - Mục tiêu trò chơi là kiếm được nhiều điểm nhất có thể, trò chơi sẽ kết thúc khi có Meteoroid chạm vào Border.
 
 #### Cơ chế hoạt động:
-- **Cách tính điểm:** Điểm được tính bằng số lượng Meteoroid phá hủy được. Với mỗi Meteoroid bị phá hủy cộng 10 điểm vào score. Số điểm sẽ được hiển thị ở góc dưới bên phải màn hình.
-- **Giới hạn:** Số lượng Arrow được giới hạn có thể thay đổi trong phần **setting** mỗi khi bắn ra số lượng Arrow giảm nếu về "0" thì không bắn ra được và có âm thanh báo. Số lượng mũi tên sẽ được hồi lại khi Arrow phá hủy Meteoroid hoặc Arrow đi hết màn hình trò chơi. Số lượng Arrow được hiển thị ở góc dưới bên trái màn hình.
-- **Lên level:** Để tạo độ khó cho game thì cứ mỗi lần đạt được 200 điểm thì tốc độ của Meteoroid sẽ tăng lên một mức.
+- **Cách tính điểm:** Điểm được tính bằng số lượng Meteoroid phá hủy được. Mỗi Meteoroid bị phá hủy tương ứng với 10 điểm. Số điểm tích lũy được sẽ hiển thị ở góc dưới bên phải màn hình.
+- **Độ khó:** Cứ mỗi lần tích lũy được 200 điểm thì tốc độ bay của Meteoroid sẽ tăng lên một mức. Độ khó ban đầu có thể cài đặt trong phần **setting**.
+- **Giới hạn của Arrow:** Khi bắn thì số lượng Arrow hiện có sẽ giảm đi tương ứng số lượng Arrow đang bay, nếu Arrow hiện có giảm về "0" thì không thể bắn được và sẽ có âm thanh báo. Số lượng Arrow hiện có sẽ được hồi lại khi phá hủy được Meteoroid hoặc Arrow bay hết màn hình game. Số lượng Arrow được hiển thị ở góc dưới bên trái màn hình và có thể thay đổi trong phần **setting**.
+
 - **Animation:** Để trò chơi thêm phần sinh động thì các đối tượng sẽ có thêm hoạt ảnh lúc di chuyển.
+- **Kết thúc trò chơi:** Khi Meteoroid chạm vào Border, trò chơi sẽ kết thúc. Các đối tượng sẽ được reset và số điểm sẽ được lưu. Bạn sẽ vào màn hình “Game Over” với 3 lựa chọn là:
+  - **Restart:** chơi lại.
+  - **Charts:** vào xem bảng xếp hạng.
+  - **Home:** về lại menu game.
 
 <center><img src="resources\images\game_over.png" width="480"/>
 
 ***Hình 4:** Màn hình Game_over* </center>
 
-Khi Meteoroid chạm vào Border, trò chơi sẽ kết thúc. Các đối tượng sẽ được reset và số điểm sẽ được lưu và bạn sẽ vào màn hình “Game Over” bạn có 3 lựa chọn là:
-- **Restart:** chơi lại.
-- **Charts:** vào xem bảng xếp hạng.
-- **Home:** về lại menu game.
-
 ## II. Thiết kế - ARCHERY GAME
 **Các khái niệm trong event-driven:**
 
-**Event:** Sự kiện là một hoạt động xảy ra trong hệ thống. Sự kiện có thể được khởi tạo bởi người dùng hoặc tự động xảy ra trong chương trình.
+- **Event Driven:** Nôn na là một hệ thống gửi thư (gửi message) để thực thi các công việc. Trong đó, Task đóng vai trò là người nhận thư, Signal đại diện cho nội dung công việc. Task & Signal nền tảng của một hệ Event Driven.
+- **Task:** Thông thường mỗi Task sẽ nhận một nhóm công công việc nào nào đó, ví dụ: quản lý state-machine, quản lý hiển thị của màn hình, quản lý việc cập nhật phần mềm, quản lý hệ thống watchdog ... 
+- **Message:** Được chia làm 2 loại chính, Message chỉ chứa Signal, hoặc vừa chứa Signal và Data. Message tương đương với Signal.
+- **Handler:** Chỗ thực thi một công việc nào đó thì gọi là Handler.
 
-**Event Handling:** Xử lý sự kiện là quá trình xác định cách chương trình phản ứng khi một sự kiện xảy ra. Điều này bao gồm việc cung cấp mã xử lý (event handler) để thực hiện các hành động tương ứng với sự kiện. Mã xử lý được gắn kết với sự kiện và sẽ được gọi tự động khi sự kiện xảy ra.
+Chi tiết các khái niệm các bạn tham khảo tại bài viết: [AK Embedded Base Kit - STM32L151 - Event Driven: Task & Signal](https://epcb.vn/blogs/ak-embedded-software/ak-embedded-base-kit-stm32l151-event-driven-task-signal)
 
 ### 2.1 Sơ đồ trình tự
-**Sơ đồ trình tự** được sử dụng để mô tả và hiển thị trình tự của các thông điệp và tương tác giữa các đối tượng trong một hệ thống.
+**Sơ đồ trình tự** được sử dụng để mô tả trình tự của các Message và luồng tương tác giữa các đối tượng trong một hệ thống.
 
 <center><img src="resources\images\sequence_object\All_game_UML.png" width="720"/>
 
 *Hình 5: The sequence diagram* </center>
 
 ### Ghi chú:
-**SCREEN_ENTRY:** Cài đặt các thiết lâp ban đầu cho đối tượng trong game.
+**SCREEN_ENTRY:** Cài đặt các thiết lập ban đầu cho đối tượng trong game.
 - **Level setup:** Thiết lập thông số cấp độ cho game.
 - **AR_GAME_ARCHERY_SETUP:** Thiết lập thông số ban đầu cho đối tượng Archery
 - **AR_GAME_ARROW_SETUP:** Thiết lập thông số ban đầu cho các đối tượng Arrow
@@ -188,7 +192,7 @@ Trong lập trình event-driven, task là một đơn vị độc lập đảm n
 
 ***Hình 7:** Bảng Signal của từng Task* </center>
 
-**(*)** Tác dụng của các Signal: xem tại Ghi chú - Hình 5
+**(*)** Tác dụng của các Signal trong game: xem tại Ghi chú - Hình 5
 
 ## III. Hướng dẫn chi tiết code trong đối tượng
 ### 3.1 Archery
@@ -221,7 +225,7 @@ Khai báo: Thư viện, struct và biến.
     ar_game_archery_t archery;
     static uint32_t archery_y = AXIS_Y_ARCHERY;
 
-AR_GAME_ARCHERY_SETUP() là một macro được dùng định nghĩa để cài đặt trạng thái ban đầu của trò chơi cung bắn. Nó đặt các giá trị của biến archery và sử dụng các hằng số được định nghĩa trước đó để thiết lập tọa độ, màu sắc và hình ảnh của cung.
+AR_GAME_ARCHERY_SETUP() là một macro được dùng định nghĩa để cài đặt trạng thái ban đầu của trò chơi bắn cung. Nó đặt các giá trị của biến archery và sử dụng các hằng số được định nghĩa trước đó để thiết lập tọa độ, màu sắc và hình ảnh của cung.
 
     #define AR_GAME_ARCHERY_SETUP() \
     do { \
@@ -306,7 +310,7 @@ Hàm ar_game_archery_handle() là một hàm xử lý các thông điệp (messa
 ***Hình 9:** Arrow sequence* </center>
 
 **Tóm tắt nguyên lý:** Arrow sẽ nhận Signal thông được gửi từ 2 nguồn là Screen và Button. Quá trình xử lý của đối tượng phần làm 3 giai đoạn:
-- **Giai đoạn 1:** Bắt đầu game, cài đặt các thông số của Arrow. Tất cả Arrow vào trạng thái lặn không hiển thị trên màn hình.
+- **Giai đoạn 1:** Bắt đầu game, cài đặt các thông số của Arrow. Tất cả Arrow vào trạng thái lặn, không hiển thị trên màn hình.
 - **Giai đoạn 2:** Chơi game, trong giai đoạn này chia làm 2 hoạt động là:
   - Cập nhật: Screen gửi Signal di chuyển cho Arrow mỗi 100ms để tăng trạng thái của Arrow tạo sự di chuyển cho Arrow.
   - Hành động: Button gửi Signal bắn tên cho Arrow mỗi khi nhấn nút. Arrow sẽ sẽ kiểm tra số mũi tên và nếu còn thì sẽ cập nhật trạng thái để bắn mũi tên ra tại vị trí hiện tại của Archery
@@ -323,7 +327,7 @@ Hàm ar_game_archery_handle() là một hàm xử lý các thông điệp (messa
 ***Hình 10:** Bang sequence* </center>
 
 **Tóm tắt nguyên lý:** Bang sẽ nhận Signal thông được gửi từ Screen. Quá trình xử lý của đối tượng phân làm 3 giai đoạn:
-- **Giai đoạn 1:** Bắt đầu game, cài đặt các thông số của Bang. Cho tất cả các bang về trạng thái lặn không xuất hiện trên màn hình.
+- **Giai đoạn 1:** Bắt đầu game, cài đặt các thông số của Bang. Cho tất cả các bang về trạng thái lặn, không xuất hiện trên màn hình.
 - **Giai đoạn 2:** Chơi game, Vụ nổ chỉ xuất sau khi Meteoroid bị phá hủy. Vụ nổ bao gồm các hoạt ảnh được cập nhật sau mỗi 100ms sau 3 hoạt ảnh thì sẽ tự reset.
 - **Giai đoạn 3:** Kết thúc game, thực hiện cài đặt lại trạng thái của Arrow trước khi thoát game.
 
@@ -366,7 +370,7 @@ Hàm ar_game_archery_handle() là một hàm xử lý các thông điệp (messa
 ## IV. Hiển thị và âm thanh trong trò chơi bắn cung
 ### 4.1 Đồ họa
 
-Trong trò chơi, màn hình hiện thị là 1 màn hình **LCD OLed 1.3"** có kích thước là 128px*64px. Nên các đối tượng được hiển thị trong game phải có kích thước hiển thị phù hợp với màn hình nên cần được thiết kế riêng. 
+Trong trò chơi, màn hình hiện thị là 1 màn hình **LCD OLed 1.3"** có kích thước là **128px*64px**. Nên các đối tượng được hiển thị trong game phải có kích thước hiển thị phù hợp với màn hình nên cần được thiết kế riêng. 
 
 Đồ họa được thiết kế từng phần theo từng đối tượng bằng phần mềm [Photopea](https://www.photopea.com/)
 
@@ -549,9 +553,9 @@ void view_scr_archery_game() {
 </details>
 
 ### 4.3 Âm thanh
-Âm thành được thiết kế qua wed [Arduino Music](https://www.instructables.com/Arduino-Music-From-Sheet-Music/)
+Âm thành được thiết kế qua website [Arduino Music](https://www.instructables.com/Arduino-Music-From-Sheet-Music/)
 
-Trong trò chơi, để trò chơi thêm phần xin động thì việc có âm thanh là điều cần thiết. 
+Trong khi chơi, để trò chơi thêm phần xinh động và chân thật thì việc có âm thanh là điều cần thiết. 
 
 Các âm thanh cần thiết kế: nút nhấn, bắn tên, vụ nổ, nhạc game.
 
@@ -747,4 +751,4 @@ static const Tone_TypeDef tones_merryChristmas[] = {
 
 </details>
 
-**Ghi chú:** Nêu không có thời gian hay không có kiếu âm nhạc thì tốt nhất nên dùng các thư viện trên github
+**Ghi chú:** Nếu không có thời gian hoặc không có khiếu âm nhạc thì tốt nhất nên dùng các thư viện trên github
