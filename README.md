@@ -7,7 +7,9 @@
 
 <center><img src="resources\images\AK_Embedded_Base_Kit_STM32L151.png" width="480"/>
 
-https://github.com/epcbtech/archery-game/blob/edit_doc/resources/images/game_play_video.mp4
+
+https://github.com/epcbtech/archery-game/assets/54855481/d493703c-bf5b-4fd2-ae04-b86784a01231
+
 
 ***Hình 1:** AK Embedded Base Kit - STM32L151* </center>
 
