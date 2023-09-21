@@ -3,7 +3,10 @@
 <center><img src="resources\images\game_cover.jpg" width="100%"/></center>
 
 
-https://github.com/epcbtech/archery-game/assets/54855481/d493703c-bf5b-4fd2-ae04-b86784a01231
+<div align="center">
+  <video src="[Archery Game](https://github.com/epcbtech/archery-game/assets/54855481/d493703c-bf5b-4fd2-ae04-b86784a01231)" width="400" />
+</div>
+
 
 
 ## I. Giới thiệu
