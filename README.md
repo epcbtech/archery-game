@@ -1,5 +1,8 @@
-# Lập trình event-driven - Áp dụng cho trò chơi bắn cung: Hướng dẫn từ cơ bản đến nâng cao
-## I. Giới thiệu - ARCHERY GAME
+# LẬP TRÌNH GAME BẮN CUNG
+
+<center><img src="resources\images\game_cover.jpg" width="100%"/></center>
+
+## I. Giới thiệu
 ### 1.1 Phần cứng
 
 <center><img src="resources\images\AK_Embedded_Base_Kit_STM32L151.png" width="480"/>
@@ -15,9 +18,8 @@ KIT cũng tích hợp **RS485**, **NRF24L01+**, và **Flash** lên đến 32MB, 
 ### 1.2 Mô tả trò chơi và đối tượng
 Phần mô tả sau đây về **“Archery game”** là giải thích cách chơi và cơ chế xử lý của trò chơi. Nhằm phục vụ cho việc thiết kế và phát triển trò chơi về sau.
 
-<center><img src="resources\images\menu_game.png" width="480"/>
-
-***Hình 2:** Menu game* </center>
+<p align="center"> <img src="resources\images\menu_game.png" width="480"/> </p>
+<p align="center"><strong><em>Hình 2:</em></strong> Menu game</p>
 
 Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lựa: 
 - **Archery Game:** chọn vào để bắt đầu chơi game.
