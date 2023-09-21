@@ -1,10 +1,22 @@
-# Lập trình event-driven - Áp dụng cho trò chơi bắn cung: Hướng dẫn từ cơ bản đến nâng cao
-## I. Giới thiệu - ARCHERY GAME
+# LẬP TRÌNH GAME BẮN CUNG
+
+<center><img src="resources\images\game_cover.jpg" width="100%"/></center>
+
+<hr>
+
+
+<div align="center">
+    <video src="https://github.com/epcbtech/archery-game/assets/54855481/d493703c-bf5b-4fd2-ae04-b86784a01231" height=200/>
+</div>
+
+
+<hr>
+
+## I. Giới thiệu
 ### 1.1 Phần cứng
 
-<center><img src="resources\images\AK_Embedded_Base_Kit_STM32L151.png" width="480"/>
-
-***Hình 1:** AK Embedded Base Kit - STM32L151* </center>
+<p align="center"><img src="resources\images\AK_Embedded_Base_Kit_STM32L151.png" width="480"/></p>
+<p align="center"><strong><em>Hình 1:</em></strong> AK Embedded Base Kit - STM32L151</p>
 
 AK Embedded Base Kit là một công cụ đánh giá dành cho các bạn học phần mềm nhúng nâng cao.
 
@@ -15,9 +27,8 @@ KIT cũng tích hợp **RS485**, **NRF24L01+**, và **Flash** lên đến 32MB, 
 ### 1.2 Mô tả trò chơi và đối tượng
 Phần mô tả sau đây về **“Archery game”** là giải thích cách chơi và cơ chế xử lý của trò chơi. Nhằm phục vụ cho việc thiết kế và phát triển trò chơi về sau.
 
-<center><img src="resources\images\menu_game.png" width="480"/>
-
-***Hình 2:** Menu game* </center>
+<p align="center"><img src="resources\images\menu_game.png" width="480"/></p>
+<p align="center"><strong><em>Hình 2:</em></strong> Menu game</p>
 
 Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lựa: 
 - **Archery Game:** chọn vào để bắt đầu chơi game.
@@ -25,9 +36,8 @@ Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lự
 - **Charts:** chọn vào để xem top 3 điểm cao nhất đạt được.
 - **Exit:** vào màn hình nghỉ.
 
-<center><img src="resources\images\objects_in_the_game.png" width="480"/>
-
-***Hình 3:** Màn hình game play và các đối tượng* </center>
+<p align="center"><img src="resources\images\objects_in_the_game.png" width="600"/></p>
+<p align="center"><strong><em>Hình 3:</em></strong> Màn hình game play và các đối tượng</p>
 
 #### Các đối tượng (Object) trong game:
 |Đối tượng|Tên đối tượng|Mô tả|
@@ -56,9 +66,8 @@ Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lự
   - **Charts:** vào xem bảng xếp hạng.
   - **Home:** về lại menu game.
 
-<center><img src="resources\images\game_over.png" width="480"/>
-
-***Hình 4:** Màn hình Game_over* </center>
+<p align="center"><img src="resources\images\game_over.png" width="480"/></p>
+<p align="center"><strong><em>Hình 4:</em></strong> Màn hình Game_over</p>
 
 ## II. Thiết kế - ARCHERY GAME
 **Các khái niệm trong event-driven:**
@@ -73,9 +82,8 @@ Chi tiết các khái niệm các bạn tham khảo tại bài viết: [AK Embed
 ### 2.1 Sơ đồ trình tự
 **Sơ đồ trình tự** được sử dụng để mô tả trình tự của các Message và luồng tương tác giữa các đối tượng trong một hệ thống.
 
-<center><img src="resources\images\sequence_object\All_game_UML.png" width="720"/>
-
-*Hình 5: The sequence diagram* </center>
+<p align="center"><img src="resources\images\sequence_object\All_game_UML.png" width="720"/></p>
+<p align="center"><strong><em>Hình 5:</em></strong> The sequence diagram</p>
 
 ### Ghi chú:
 **SCREEN_ENTRY:** Cài đặt các thiết lập ban đầu cho đối tượng trong game.
@@ -180,16 +188,14 @@ Trong lập trình event-driven, task là một đơn vị độc lập đảm n
 - **Tách biệt logic:** Sử dụng task giúp tách biệt logic xử lý sự kiện. Điều này giúp tăng tính sạch sẽ, dễ đọc.
 - **Phân cấp nhiệm vụ:** Task level cho phép sắp xếp trình tự ưu tiên xử lý các message của task ở trong hàng đợi của hệ thống. Trong game các task level của game điều là 4 nên task nào được gọi trước sẽ xử lý trước. 
 
-<center><img src="resources\images\table_task.png" width="480"/>
-
-***Hình 6:** Bảng Task của các đối tượng* </center>
+<p align="center"><img src="resources\images\table_task.png" width="720"/></p>
+<p align="center"><strong><em>Hình 6:</em></strong> Bảng Task của các đối tượng</p>
 
 #### 2.2.3 Signal
 **Signal** là một cơ chế truyền thông tin giữa các thành phần trong hệ thống event-driven. Khi một sự kiện xảy ra, nó có thể gửi một signal để thông báo cho các thành phần khác về việc xảy ra của sự kiện đó. 
 
-<center><img src="resources\images\table_signal.png" width="480"/>
-
-***Hình 7:** Bảng Signal của từng Task* </center>
+<p align="center"><img src="resources\images\table_signal.png" width="720"/></p>
+<p align="center"><strong><em>Hình 7:</em></strong> Bảng Signal của từng Task</p>
 
 **(*)** Tác dụng của các Signal trong game: xem tại Ghi chú - Hình 5
 
@@ -197,9 +203,8 @@ Trong lập trình event-driven, task là một đơn vị độc lập đảm n
 ### 3.1 Archery
 **Sequence diagram:**
 
-<center><img src="resources\images\sequence_object\archery_sequence.png" width="480"/>
-
-***Hình 8:** Archery sequence* </center>
+<p align="center"><img src="resources\images\sequence_object\archery_sequence.png" width="640"/></p>
+<p align="center"><strong><em>Hình 8:</em></strong> Archery sequence</p>
 
 **Tóm tắt nguyên lý:** Archery sẽ nhận Signal thông được gửi từ 2 nguồn là Screen và Button. Quá trình xử lý của đối tượng phần làm 3 giai đoạn:
 - **Giai đoạn 1:** Bắt đầu game, cài đặt các thông số của Archery như vị trí và hình ảnh.
@@ -304,9 +309,8 @@ Hàm ar_game_archery_handle() là một hàm xử lý các thông điệp (messa
 
 **Sequence diagram:**
 
-<center><img src="resources\images\sequence_object\arrow_sequence.png" width="480"/>
-
-***Hình 9:** Arrow sequence* </center>
+<p align="center"><img src="resources\images\sequence_object\arrow_sequence.png" width="640"/></p>
+<p align="center"><strong><em>Hình 9:</em></strong> Arrow sequence</p>
 
 **Tóm tắt nguyên lý:** Arrow sẽ nhận Signal thông được gửi từ 2 nguồn là Screen và Button. Quá trình xử lý của đối tượng phần làm 3 giai đoạn:
 - **Giai đoạn 1:** Bắt đầu game, cài đặt các thông số của Arrow. Tất cả Arrow vào trạng thái lặn, không hiển thị trên màn hình.
@@ -321,9 +325,8 @@ Hàm ar_game_archery_handle() là một hàm xử lý các thông điệp (messa
 
 **Sequence diagram:**
 
-<center><img src="resources\images\sequence_object\bang_sequence.png" width="480"/>
-
-***Hình 10:** Bang sequence* </center>
+<p align="center"><img src="resources\images\sequence_object\bang_sequence.png" width="640"/></p>
+<p align="center"><strong><em>Hình 10:</em></strong> Bang sequence</p>
 
 **Tóm tắt nguyên lý:** Bang sẽ nhận Signal thông được gửi từ Screen. Quá trình xử lý của đối tượng phân làm 3 giai đoạn:
 - **Giai đoạn 1:** Bắt đầu game, cài đặt các thông số của Bang. Cho tất cả các bang về trạng thái lặn, không xuất hiện trên màn hình.
@@ -336,9 +339,8 @@ Hàm ar_game_archery_handle() là một hàm xử lý các thông điệp (messa
 
 **Sequence diagram:**
 
-<center><img src="resources\images\sequence_object\border_sequence.png" width="480"/>
-
-***Hình 11:** Border sequence* </center>
+<p align="center"><img src="resources\images\sequence_object\border_sequence.png" width="640"/></p>
+<p align="center"><strong><em>Hình 11:</em></strong> Border sequence</p>
 
 **Tóm tắt nguyên lý:** Border là 1 đối tượng bất động trong game. Có nhiệm vụ update level khi đến mốc điểm quy định và kiểm tra game over.
 - **Giai đoạn 1:** Bắt đầu game, cài đặt thông số vị trí và hiển thị của Border.
@@ -353,9 +355,8 @@ Hàm ar_game_archery_handle() là một hàm xử lý các thông điệp (messa
 
 **Sequence diagram:**
 
-<center><img src="resources\images\sequence_object\meteoroid_sequence.png" width="480"/>
-
-***Hình 12:** Meteoroid sequence* </center>
+<p align="center"><img src="resources\images\sequence_object\meteoroid_sequence.png" width="640"/></p>
+<p align="center"><strong><em>Hình 12:</em></strong> Meteoroid sequence</p>
 
 **Tóm tắt nguyên lý:** Meteoroid là đối tượng xuất hiện và di chuyển liên tục trong game nhận signal từ Screen. Chia làm 3 giai đoạn:
 - **Giai đoạn 1:** Bắt đầu game, cài đặt thông số của Meteoroid. Cấp điểm xuất phát ngẫu nghiên cho Meteoroid, hiển thị lên màn hình.
@@ -375,9 +376,8 @@ Trong trò chơi, màn hình hiện thị là 1 màn hình **LCD OLed 1.3"** có
 
 #### Thiết kế đồ họa cho các đối tượng
 
-<center><img src="resources\images\table_bitmap.png" width="720"/>
-
-***Hình 13:** Bitmap của các đối tượng* </center>
+<p align="center"><img src="resources\images\table_bitmap.png" width="720"/></p>
+<p align="center"><strong><em>Hình 13:</em></strong> Bitmap của các đối tượng</p>
 
 **Bitmap** là một cấu trúc dữ liệu được sử dụng để lưu trữ và hiển thị hình ảnh trong game.
 
