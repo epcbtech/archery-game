@@ -36,7 +36,7 @@ Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lự
 - **Charts:** chọn vào để xem top 3 điểm cao nhất đạt được.
 - **Exit:** vào màn hình nghỉ.
 
-<p align="center"><img src="resources\images\objects_in_the_game.png" width="480"/></p>
+<p align="center"><img src="resources\images\objects_in_the_game.png" width="600"/></p>
 <p align="center"><strong><em>Hình 3:</em></strong> Màn hình game play và các đối tượng</p>
 
 #### Các đối tượng (Object) trong game:
@@ -188,13 +188,13 @@ Trong lập trình event-driven, task là một đơn vị độc lập đảm n
 - **Tách biệt logic:** Sử dụng task giúp tách biệt logic xử lý sự kiện. Điều này giúp tăng tính sạch sẽ, dễ đọc.
 - **Phân cấp nhiệm vụ:** Task level cho phép sắp xếp trình tự ưu tiên xử lý các message của task ở trong hàng đợi của hệ thống. Trong game các task level của game điều là 4 nên task nào được gọi trước sẽ xử lý trước. 
 
-<p align="center"><img src="resources\images\table_task.png" width="480"/></p>
+<p align="center"><img src="resources\images\table_task.png" width="720"/></p>
 <p align="center"><strong><em>Hình 6:</em></strong> Bảng Task của các đối tượng</p>
 
 #### 2.2.3 Signal
 **Signal** là một cơ chế truyền thông tin giữa các thành phần trong hệ thống event-driven. Khi một sự kiện xảy ra, nó có thể gửi một signal để thông báo cho các thành phần khác về việc xảy ra của sự kiện đó. 
 
-<p align="center"><img src="resources\images\table_signal.png" width="480"/></p>
+<p align="center"><img src="resources\images\table_signal.png" width="720"/></p>
 <p align="center"><strong><em>Hình 7:</em></strong> Bảng Signal của từng Task</p>
 
 **(*)** Tác dụng của các Signal trong game: xem tại Ghi chú - Hình 5
@@ -203,7 +203,7 @@ Trong lập trình event-driven, task là một đơn vị độc lập đảm n
 ### 3.1 Archery
 **Sequence diagram:**
 
-<p align="center"><img src="resources\images\sequence_object\archery_sequence.png" width="480"/></p>
+<p align="center"><img src="resources\images\sequence_object\archery_sequence.png" width="640"/></p>
 <p align="center"><strong><em>Hình 8:</em></strong> Archery sequence</p>
 
 **Tóm tắt nguyên lý:** Archery sẽ nhận Signal thông được gửi từ 2 nguồn là Screen và Button. Quá trình xử lý của đối tượng phần làm 3 giai đoạn:
