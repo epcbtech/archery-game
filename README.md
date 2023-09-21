@@ -7,6 +7,8 @@
 
 <center><img src="resources\images\AK_Embedded_Base_Kit_STM32L151.png" width="480"/>
 
+https://github.com/epcbtech/archery-game/blob/edit_doc/resources/images/game_play_video.mp4
+
 ***Hình 1:** AK Embedded Base Kit - STM32L151* </center>
 
 AK Embedded Base Kit là một công cụ đánh giá dành cho các bạn học phần mềm nhúng nâng cao.
