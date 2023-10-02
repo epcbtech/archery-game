@@ -42,7 +42,7 @@ Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lự
 <p align="center"><img src="https://github.com/epcbtech/archery-game/blob/main/resources/images/objects_in_the_game.webp" alt="archery game play screen" width="600"/></p>
 <p align="center"><strong><em>Hình 3:</em></strong> Màn hình game play và các đối tượng</p>
 
-#### Các đối tượng (Object) trong game:
+#### 1.2.1 Các đối tượng (Object) trong game:
 |Đối tượng|Tên đối tượng|Mô tả|
 |---|---|---|
 |**Cung tên**|Archery|Di chuyển lên/xuống để chọn vị trí bắn ra mũi tên|
@@ -53,12 +53,12 @@ Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lự
 
 **(*)** Trong phần còn lại của tài liệu sẽ dùng tên của các đối tượng để đề cập đến đối tượng.
 
-#### Cách chơi game: 
+#### 1.2.2 Cách chơi game: 
 - Trong trò chơi này bạn sẽ điều khiển Archery, di chuyển **lên/xuống** bằng hai nút **[Up]/[Down]**, để chọn vị trí **bắn ra** Arrow.
 - Khi nhấn nút **[Mode]** Arrow sẽ được bắn ra, nhằm phá hủy các Meteoroid đang bay đến.
 - Mục tiêu trò chơi là kiếm được càng nhiều điểm càng tốt, trò chơi sẽ kết thúc khi có Meteoroid chạm vào Border.
 
-#### Cơ chế hoạt động:
+#### 1.2.3 Cơ chế hoạt động:
 - **Cách tính điểm:** Điểm được tính bằng số lượng Meteoroid bị phá hủy. Mỗi Meteoroid bị phá hủy tương ứng với 10 điểm. Số điểm tích lũy được sẽ hiển thị ở góc dưới bên phải màn hình.
 - **Độ khó:** Mỗi khi tích lũy được 200 điểm, tốc độ bay của Meteoroid sẽ tăng lên một cấp độ. Độ khó ban đầu có thể cài đặt trong phần **setting**.
 - **Giới hạn của Arrow:** Khi bắn thì số lượng Arrow hiện có sẽ giảm đi tương ứng số lượng Arrow đang bay, nếu Arrow hiện có giảm về "0" thì không thể bắn được và sẽ có âm thanh báo. Số lượng Arrow hiện có sẽ được hồi lại khi phá hủy được Meteoroid hoặc Arrow bay hết màn hình game. Số lượng Arrow được hiển thị ở góc dưới bên trái màn hình và có thể thay đổi trong phần **setting**.
@@ -377,7 +377,7 @@ Trong trò chơi, màn hình hiện thị là 1 màn hình **LCD OLed 1.3"** có
 
 Đồ họa được thiết kế từng phần theo từng đối tượng bằng phần mềm [Photopea](https://www.photopea.com/)
 
-#### Thiết kế đồ họa cho các đối tượng
+#### 4.1.1 Thiết kế đồ họa cho các đối tượng
 
 <p align="center"><img src="https://github.com/epcbtech/archery-game/blob/main/resources/images/table_bitmap.webp" alt="archery game bitmap" width="720"/></p>
 <p align="center"><strong><em>Hình 13:</em></strong> Bitmap của các đối tượng</p>
@@ -388,7 +388,7 @@ Trong trò chơi, màn hình hiện thị là 1 màn hình **LCD OLed 1.3"** có
 
 **Ghi chú:** Trong thiết kế trên có nhiều ảnh khác nhau cho cùng 1 đối tượng để tạo animation cho đối tượng đó nhằm tăng tính chân thật lúc chơi game.
 
-**Code:**
+#### 4.1.2 Code
 
 **Archer display:**
 ```sh
@@ -554,7 +554,7 @@ void view_scr_archery_game() {
 
 </details>
 
-### 4.3 Âm thanh
+### 4.2 Âm thanh
 Âm thành được thiết kế qua website [Arduino Music](https://www.instructables.com/Arduino-Music-From-Sheet-Music/)
 
 Trong khi chơi, để trò chơi thêm phần xinh động và chân thật thì việc có âm thanh là điều cần thiết. 
