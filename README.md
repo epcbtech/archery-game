@@ -21,23 +21,23 @@ Archery game là một tựa game chạy trên AK Embedded Base Kit. Được x�
 <p align="center"><img src="https://github.com/epcbtech/archery-game/blob/main/resources/images/AK_Embedded_Base_Kit_STM32L151.webp" alt="AK Embedded Base Kit - STM32L151" width="480"/></p>
 <p align="center"><strong><em>Hình 1:</em></strong> AK Embedded Base Kit - STM32L151</p>
 
-[AK Embedded Base Kit](https://epcb.vn/products/ak-embedded-base-kit-lap-trinh-nhung-vi-dieu-khien-mcu) là một công cụ đánh giá dành cho các bạn học phần mềm nhúng nâng cao.
+[AK Embedded Base Kit](https://epcb.vn/products/ak-embedded-base-kit-lap-trinh-nhung-vi-dieu-khien-mcu) là một evaluation kit dành cho các bạn học phần mềm nhúng nâng cao.
 
 KIT tích hợp LCD **OLED 1.3", 3 nút nhấn, và 1 loa Buzzer phát nhạc**, với các trang bị này thì đã đủ để học hệ thống event-driven thông qua thực hành thiết kế máy chơi game.
 
 KIT cũng tích hợp **RS485**, **NRF24L01+**, và **Flash** lên đến 32MB, thích hợp cho prototype các ứng dụng thực tế trong hệ thống nhúng hay sử dụng như: truyền thông có dây, không dây wireless, các ứng dụng lưu trữ data logger,...
 
 ### 1.2 Mô tả trò chơi và đối tượng
-Phần mô tả sau đây về **“Archery game”** là giải thích cách chơi và cơ chế xử lý của trò chơi. Nhằm phục vụ cho việc thiết kế và phát triển trò chơi về sau.
+Phần mô tả sau đây về **“Archery game”** , giải thích cách chơi và cơ chế xử lý của trò chơi. Tài liệu này dùng để tham khảo thiết kế và phát triển trò chơi về sau.
 
 <p align="center"><img src="https://github.com/epcbtech/archery-game/blob/main/resources/images/menu_game.webp" alt="menu game" width="480"/></p>
 <p align="center"><strong><em>Hình 2:</em></strong> Menu game</p>
 
-Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lựa: 
-- **Archery Game:** chọn vào để bắt đầu chơi game.
-- **Setting:** chọn vào để cài đặt các thông số của game.
-- **Charts:** chọn vào để xem top 3 điểm cao nhất đạt được.
-- **Exit:** vào màn hình nghỉ.
+Trò chơi bắt đầu bằng màn hình **Menu game** với các lựa chọn sau: 
+- **Archery Game:** Chọn vào để bắt đầu chơi game.
+- **Setting:** Chọn vào để cài đặt các thông số của game.
+- **Charts:** Chọn vào để xem top 3 điểm cao nhất đạt được.
+- **Exit:** Thoát menu vào màn hình chờ.
 
 <p align="center"><img src="https://github.com/epcbtech/archery-game/blob/main/resources/images/objects_in_the_game.webp" alt="archery game play screen" width="600"/></p>
 <p align="center"><strong><em>Hình 3:</em></strong> Màn hình game play và các đối tượng</p>
@@ -60,8 +60,8 @@ Trò chơi bắt đầu với màn hình **Menu game** với nhiều chọn lự
 
 #### 1.2.3 Cơ chế hoạt động:
 - **Cách tính điểm:** Điểm được tính bằng số lượng Meteoroid bị phá hủy. Mỗi Meteoroid bị phá hủy tương ứng với 10 điểm. Số điểm tích lũy được sẽ hiển thị ở góc dưới bên phải màn hình.
-- **Độ khó:** Mỗi khi tích lũy được 200 điểm, tốc độ bay của Meteoroid sẽ tăng lên một cấp độ. Độ khó ban đầu có thể cài đặt trong phần **setting**.
-- **Giới hạn của Arrow:** Khi bắn thì số lượng Arrow hiện có sẽ giảm đi tương ứng số lượng Arrow đang bay, nếu Arrow hiện có giảm về "0" thì không thể bắn được và sẽ có âm thanh báo. Số lượng Arrow hiện có sẽ được hồi lại khi phá hủy được Meteoroid hoặc Arrow bay hết màn hình game. Số lượng Arrow được hiển thị ở góc dưới bên trái màn hình và có thể thay đổi trong phần **setting**.
+- **Độ khó:** Mỗi khi tích lũy được 200 điểm, tốc độ bay của Meteoroid sẽ tăng lên một cấp độ. Độ khó ban đầu có thể cài đặt trong phần **Setting**.
+- **Giới hạn của Arrow:** Khi bắn thì số lượng Arrow hiện có sẽ giảm đi tương ứng số lượng Arrow đang bay, nếu Arrow hiện có giảm về "0" thì không thể bắn được và sẽ có âm thanh báo. Số lượng Arrow hiện có sẽ được hồi lại khi phá hủy được Meteoroid hoặc Arrow bay hết màn hình game. Số lượng Arrow được hiển thị ở góc dưới bên trái màn hình và có thể thay đổi trong phần **Setting**.
 
 - **Animation:** Để trò chơi thêm phần sinh động thì các đối tượng sẽ có thêm hoạt ảnh lúc di chuyển.
 - **Kết thúc trò chơi:** Khi Meteoroid chạm vào Border, trò chơi sẽ kết thúc. Các đối tượng sẽ được reset và số điểm sẽ được lưu. Bạn sẽ vào màn hình “Game Over” với 3 lựa chọn là:
@@ -136,7 +136,7 @@ Chi tiết các khái niệm các bạn tham khảo tại bài viết: [AK Embed
 ### 2.2 Chi tiết
 
 Sau khi xác định được các đối tượng trong game mà chúng ta cần, tiếp theo chúng ta phải liệt kê ra các thuộc tính, các task, các signal và bitmap mà trong game sẽ sử dụng tới.
-Việc liệt kê càng chi tiết thì việc làm game diễn ra càng nhanh và tạo tình rõ ràng minh bạch cho phần tài nguyên giúp phần code game diễn ra suông sẽ hơn.
+Việc liệt kê càng chi tiết thì việc làm game diễn ra càng nhanh và tạo tình rõ ràng minh bạch cho phần tài nguyên giúp phần code game diễn ra suông sẻ hơn.
 
 #### 2.2.1 Thuộc tính đối tượng
 Việc liệt kê các thuộc tính của đối tượng trong game có các tác dụng quan trọng sau:
@@ -145,7 +145,7 @@ Việc liệt kê các thuộc tính của đối tượng trong game có các t
 - Khi bạn xác định trước các thuộc tính cần thiết, bạn giảm thiểu khả năng bỏ sót hoặc nhầm lẫn trong việc xử lý và sử dụng các thuộc tính.
 
 **Trạng thái** của một đối tượng được biểu diễn bởi các **thuộc tính**. Trong trò chơi này các đối tượng có các thuộc tính cụ thể là:
-- **visible:** Quy định hiển thị của đối tượng.
+- **visible:** Quy định hiển thị, ẩn/hiện của đối tượng.
 - **x, y:** Quy định vị trí của đối tượng trên màn hình.
 - **action_image:** Quy định hoạt ảnh tạo animation.
 
@@ -184,18 +184,18 @@ Ví dụ:
   - settingsetup.meteoroid_speed : Cấu hình tốc độ của thiên thạch.
 
 #### 2.2.2 Task
-Trong lập trình event-driven, task là một đơn vị độc lập đảm nhiệm một nhóm công việc cụ thể. Khi hệ thống scheduler tìm thấy message liên quan đến task trong hàng đợi, hệ thống sẽ gọi hàm thực thi của task để xử lý message được gửi đến. Một số tác dụng quan trọng của task:
+Trong lập trình event-driven, task là một đơn vị độc lập đảm nhiệm một nhóm công việc nhất định. Khi hệ thống scheduler tìm thấy message liên quan đến task trong hàng đợi, hệ thống sẽ gọi hàm thực thi của task để xử lý message được gửi đến. Một số tác dụng quan trọng của task:
 - **Xử lý sự kiện:** Task được sử dụng để xử lý các message được bắn đến khi có sự kiện xảy ra. Mỗi task có thể được liên kết với một sự kiện cụ thể và thực thi một loạt các hành động khi sự kiện đó xảy ra.
 - **Đồng bộ hóa:** Task cung cấp cơ chế đồng bộ hóa cho việc xử lý các sự kiện. Khi một sự kiện xảy ra, task tương ứng được kích hoạt và thực thi. Các task khác sẽ đợi cho đến khi task hiện tại hoàn thành trước khi được kích hoạt. Điều này giúp đảm bảo rằng các hành động xử lý sự kiện được thực hiện theo một thứ tự nhất định và tránh xung đột.
 - **Quản lý luồng điều khiển:** Task cho phép quản lý luồng sự kiện trong ứng dụng event-driven. Bằng cách sử dụng task, bạn có thể xác định thứ tự thực thi của các hành động khi xảy ra các sự kiện khác nhau.
-- **Tách biệt logic:** Sử dụng task giúp tách biệt logic xử lý sự kiện. Điều này giúp tăng tính sạch sẽ, dễ đọc.
+- **Tách biệt logic:** Sử dụng task giúp tách biệt logic xử lý sự kiện, điều này giúp Source code rõ ràng, dễ đọc.
 - **Phân cấp nhiệm vụ:** Task level cho phép sắp xếp trình tự ưu tiên xử lý các message của task ở trong hàng đợi của hệ thống. Trong game các task level của game điều là 4 nên task nào được gọi trước sẽ xử lý trước. 
 
 <p align="center"><img src="https://github.com/epcbtech/archery-game/blob/main/resources/images/table_task.webp" alt="archery tasks design" width="720"/></p>
 <p align="center"><strong><em>Hình 6:</em></strong> Bảng Task của các đối tượng</p>
 
-#### 2.2.3 Signal
-**Signal** là một cơ chế truyền thông tin giữa các thành phần trong hệ thống event-driven. Khi một sự kiện xảy ra, nó có thể gửi một signal để thông báo cho các thành phần khác về việc xảy ra của sự kiện đó. 
+#### 2.2.3 Message & Signal
+**Message** được chia làm 2 loại chính, Message chỉ chứa Signal và Message vừa chứa Signal và Data. **Message** tương đương với **Signal**
 
 <p align="center"><img src="https://github.com/epcbtech/archery-game/blob/main/resources/images/table_signal.webp" alt="archery signals design" width="720"/></p>
 <p align="center"><strong><em>Hình 7:</em></strong> Bảng Signal của từng Task</p>
